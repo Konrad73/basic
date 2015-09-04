@@ -1,0 +1,79 @@
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+html,
+body,
+textarea,
+input[type=text] {
+  font: 16px / 1.3125 'Source Sans Pro', 'Helvetica Neue', Verdana, sans-serif;
+}
+label {
+  cursor: pointer;
+}
+
+
+
+.clearfix:after {
+  content: " ";
+  display: block;
+  clear: both;
+}
+
+
+
+
+
+
+// Links
+a {
+  color: $color-blue-500;
+  cursor: pointer;
+  text-decoration: none;
+
+  &:focus,
+  &:hover {
+    color: $color-blue-700;
+    text-decoration: underline;
+  }
+  &:active {
+    color: $color-blue-900;
+  }
+}
+
+.label {
+  background: $color-gray-600;
+  border-radius: 3px;
+  color: $color-white;
+  display: inline-block;
+  font-size: 90%;
+  line-height: 1.4;
+  padding: 1px 4px;
+
+  &--warning {
+    background: $color-orange-500;
+  }
+
+  // Miscellaneous global classes
+  &.ta-badge {
+    background-color: $color-green-500;
+    font-weight: bold;
+    padding: 1px 6px;
+  }
+
+  &.status--granted {
+    background-color: $color-green-600;
+  }
+  &.status--pending {
+    background-color: $color-cyan-500;
+  }
+  &.status--refused {
+    background-color: $color-black;
+  }
+}

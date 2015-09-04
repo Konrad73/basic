@@ -1,0 +1,282 @@
+@import '~shared/variables.scss';
+@import '~shared/icons.scss';
+
+//basic button model: Type Normal
+
+    .normal {
+        appearance: none;
+        background: $color-gray-200;
+        /* border: 0; */
+        border: 1px solid $color-gray-300;
+        border-bottom-color: $color-gray-400;
+        border-radius: 3px;
+        box-shadow: 0 1px 0 rgba($color-gray-600, .25);
+        /* box-shadow: 0 1px 1px rgba($color-gray-600, .5); */
+        color: $color-gray-600;
+        display: inline-block;
+        font-size: 14px;
+        height: 26px;
+        line-height: 16px;
+        padding: 4px 8px;
+        margin: 0 4px 0 0;
+        position: relative;
+        transition: color 60ms ease;
+        transition-property: background-color, color;
+        user-select: none;
+        vertical-align: bottom;
+
+        &:focus {
+            border-color: $color-blue-500;
+            box-shadow: 0 1px 0 rgba($color-blue-500, .5);
+            /* No blurry box shadow */
+            /* box-shadow: 0 1px 1px rgba($color-gray-600, .5), 0 0 4px $color-blue-500; */
+        }
+
+        &:focus, &:hover {
+            background-color: mix($color-blue-500, $color-white, 20%);
+            color: $color-gray-800;
+            cursor: pointer;
+            outline: none;
+        }
+
+        &:not([disabled]):active,
+        &:not([aria-disabled="true"]):active {
+            box-shadow: none;
+            transform: translateY(1px);
+        }
+
+        &[disabled],
+        &[aria-disabled="true"] {
+            background: $color-gray-100;
+            border: 1px solid $color-gray-200;
+            color: $color-gray-300;
+            cursor: not-allowed;
+        }
+
+    }
+
+
+
+//Different types of buttons (property type=)
+
+.primary {
+    composes: normal;
+    background: $color-blue-500;
+    border-color: $color-blue-500;
+    box-shadow: 0 1px 0 $color-blue-600;
+    color: $color-white;
+    min-width: 64px;
+    padding: 4px 12px;
+
+    &:focus {
+        border-color: $color-blue-700;
+        box-shadow: 0 1px 0 rgba($color-blue-700, .8), 0 0 4px $color-blue-500;
+    }
+    &:focus,
+    &:hover {
+        background: $color-blue-600;
+        border-color: $color-blue-600;
+        color: $color-white;
+    }
+    &[disabled],
+    &[aria-disabled="true"],
+    &[disabled]:hover,
+    &[aria-disabled="true"]:hover {
+        background: $color-blue-500;
+        border-color: $color-blue-500;
+        box-shadow: none;
+        color: $color-white;
+        opacity: .4;
+    }
+}
+
+.alternate {
+    /* background: $color-cyan-500; */
+    composes: normal;
+    background: rgba($color-cyan-500, .2);
+    border-color: $color-cyan-500;
+    /* box-shadow: 0 1px 0 $color-cyan-800; */
+    box-shadow: none;
+    /* color: $color-white; */
+    color: $color-cyan-600;
+
+    &:focus {
+        /* box-shadow: 0 1px 0 rgba($color-cyan-800, .5), 0 0 3px 1px $color-cyan-500; */
+        box-shadow: inset 0 0 0 1px white;
+    }
+    &:focus,
+    &:hover {
+        background: $color-cyan-600;
+        border-color: $color-cyan-700;
+        color: $color-white;
+    }
+    &[disabled],
+    &[aria-disabled="true"],
+    &[disabled]:hover,
+    &[aria-disabled="true"]:hover {
+        background: $color-gray-100;
+        border: 1px solid $color-gray-200;
+        color: $color-gray-300;
+        cursor: not-allowed;
+    }
+}
+
+
+.warning {
+    composes: normal;
+    background: $color-orange-500;
+    border-color: $color-orange-600;
+    box-shadow: 0 1px 0 $color-orange-700;
+    color: $color-white;
+
+    &:focus {
+        box-shadow: 0 1px 0 rgba($color-orange-800, .5), 0 0 3px 1px $color-orange-500;
+    }
+    &:focus,
+    &:hover {
+        background: $color-orange-600;
+        border-color: $color-orange-700;
+        color: $color-white;
+    }
+    &[disabled],
+    &[aria-disabled="true"],
+    &[disabled]:hover,
+    &[aria-disabled="true"]:hover {
+        background: $color-gray-100;
+        border: 1px solid $color-gray-200;
+        color: $color-gray-300;
+        cursor: not-allowed;
+        box-shadow: none;
+    }
+}
+
+
+.error, .delete {
+    composes: normal;
+    background: $color-red-600;
+    border-color: $color-red-700;
+    box-shadow: 0 1px 0 $color-red-700;
+    color: $color-white;
+
+    &:focus {
+        box-shadow: 0 1px 0 rgba($color-red-800, .5), 0 0 3px 1px $color-red-500;
+    }
+    &:focus,
+    &:hover {
+        background: $color-red-600;
+        border-color: $color-red-700;
+        color: $color-white;
+    }
+    &[disabled],
+    &[aria-disabled="true"],
+    &[disabled]:hover,
+    &[aria-disabled="true"]:hover {
+        background: $color-gray-100;
+        border: 1px solid $color-gray-200;
+        color: $color-gray-300;
+        cursor: not-allowed;
+        box-shadow: none;
+    }
+}
+
+.link {
+    composes: normal;
+    background: none;
+    border: 0;
+    border-radius: 3px;
+    box-shadow: none;
+    color: $color-blue-500;
+    cursor: pointer;
+    padding: 0;
+    text-decoration: none;
+
+    &:focus {
+        // TODO: Come up with a better :focus state than something like this:
+        /* outline: 1px dotted $color-blue-500; */
+    }
+    &:focus,
+    &:hover,
+    &:active {
+        background: none;
+        box-shadow: none;
+        color: $color-blue-700;
+        text-decoration: underline;
+    }
+
+    &[disabled],
+    &[aria-disabled="true"], {
+        background: none;
+        border: 0;
+        color: $color-gray-400;
+        text-decoration: none;
+
+        &:hover {
+            background: none;
+            border: 0;
+            color: $color-gray-400;
+        }
+    }
+}
+
+.link_delete {
+    composes: link;
+    color: $color-red-500;
+
+    &:focus,
+    &:hover,
+    &:active {
+        color: $color-red-700;
+    }
+}
+
+// Sizes of buttons
+
+.largest {
+    font-size: 32px;
+    height: 52px;
+
+}
+
+.large {
+    font-size: 24px;
+    height: 40px;
+}
+
+.small {
+    font-size: 12px;
+    line-height: 20px;
+    height: 20px;
+    padding: 0 6px;
+}
+
+.smallest {
+    font-size: 10px;
+    height: 16px;
+    line-height: 16px;
+    padding: 0 6px;
+}
+
+
+
+//Icon-specific styles
+
+.icon {
+    font-size: 1.1em;
+    /* float: left; */
+    margin: 0 6px 0 0;
+    vertical-align: -1px;
+    display: inline-block;
+    text-decoration: none;
+}
+
+
+
+.iconRight   {
+    float: right;
+    margin: 0 0 0 6px;
+}
+
+.iconOnly {
+    margin: 0;
+    padding: 0;
+}
